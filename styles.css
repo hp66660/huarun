@@ -109,93 +109,21 @@ body {
 /* 主容器 */
 .main-container {
     display: flex;
-    height: calc(100vh - 48px);
-}
-
-/* 左侧边栏 - 包含画板和页面列表 */
-.left-sidebar {
-    width: 250px;
-    background: white;
-    border-right: 1px solid #e0e0e0;
-    display: flex;
     flex-direction: column;
-    height: calc(100vh - 48px);
-    overflow: hidden;
-}
-
-/* 画板部分 */
-.artboard-section {
-    padding: 16px;
-    border-bottom: 1px solid #e0e0e0;
-    flex-shrink: 0;
-}
-
-/* 页面列表部分 */
-.pages-section {
-    padding: 16px;
-    flex: 1;
-    overflow-y: auto;
-    min-height: 0;
-}
-
-.sidebar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-}
-
-.sidebar-title {
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.sidebar-actions {
-    display: flex;
-    gap: 8px;
-}
-
-.search-btn,
-.more-btn {
-    border: none;
-    background: transparent;
-    font-size: 14px;
-    cursor: pointer;
-    padding: 4px;
-}
-
-.artboard-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.artboard-item.active {
-    background: #f0f8ff;
-}
-
-.artboard-icon {
-    font-size: 16px;
-}
-
-.artboard-name {
-    font-size: 13px;
-}
-
-/* 设计区域 */
-.design-area {
-    flex: 1;
+    height: 100vh;
     background: #f8f9fa;
+}
+
+/* 手机模拟器区域 */
+.phone-area {
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 40px;
-    width: calc(100vw - 250px);
+    padding: 20px;
 }
+
+
 
 .phone-container {
     display: flex;
@@ -790,32 +718,9 @@ body {
 .page-info .current { color: #1a73e8; font-weight: 600; }
 .page-info .sep { color: #9ca3af; margin: 0 2px; }
 
-/* 面板头部 */
-.panel-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-}
 
-.panel-title {
-    font-size: 14px;
-    font-weight: 500;
-}
 
-/* 页面列表 */
-.page-list {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    max-height: 100%;
-    overflow-y: auto;
-}
 
-/* 自定义滚动条样式 */
-.pages-section::-webkit-scrollbar {
-    width: 6px;
-}
 
 /* 消息页面样式 */
 .page-3 {
@@ -914,97 +819,17 @@ body {
 .chat-sub { color: #8a8a8a; font-size: 11px; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 
-.pages-section::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 3px;
-}
 
-.pages-section::-webkit-scrollbar-thumb {
-    background: #c1c1c1;
-    border-radius: 3px;
-}
-
-.pages-section::-webkit-scrollbar-thumb:hover {
-    background: #a8a8a8;
-}
-
-.page-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 8px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.page-item:hover {
-    background: #f5f5f5;
-}
-
-.page-item.active {
-    background: #e3f2fd;
-    border-left: 3px solid #2196f3;
-}
-
-.page-number {
-    font-size: 12px;
-    color: #666;
-    min-width: 16px;
-}
-
-.page-name {
-    font-size: 13px;
-    flex: 1;
-}
-
-.page-lock {
-    border: none;
-    background: transparent;
-    font-size: 12px;
-    cursor: pointer;
-    opacity: 0.5;
-}
 
 /* 响应式设计 */
-@media (max-width: 1200px) {
-    .left-sidebar {
-        width: 220px;
-    }
-
-    .design-area {
-        width: calc(100vw - 220px);
-    }
-}
-
-@media (max-width: 900px) {
-    .left-sidebar {
-        width: 200px;
-    }
-
-    .design-area {
-        width: calc(100vw - 200px);
-    }
-
-    .iphone-frame {
-        width: 240px;
-        height: 480px;
-    }
-}
-
 @media (max-width: 768px) {
-    .left-sidebar {
-        width: 180px;
-    }
-
-    .design-area {
-        width: calc(100vw - 180px);
-        padding: 20px;
-    }
-
     .iphone-frame {
-        width: 200px;
-        height: 400px;
+        width: 280px;
+        height: 560px;
+    }
+
+    .phone-area {
+        padding: 10px;
     }
 }
 
@@ -1314,6 +1139,13 @@ body {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+.profile-name.editable::after {
+    content: " ✏️";
+    font-size: 12px;
+    opacity: 0.6;
+    margin-left: 4px;
+}
+
 .profile-badge {
     background: #FF4444;
     color: white;
@@ -1409,6 +1241,13 @@ body {
 .detail-value.editable:hover {
     background-color: rgba(255, 255, 255, 0.1);
     color: #fff;
+}
+
+.detail-value.editable::after {
+    content: " ✏️";
+    font-size: 10px;
+    opacity: 0.6;
+    margin-left: 4px;
 }
 
 .detail-link {
@@ -3137,11 +2976,152 @@ body {
         transform: scale(0.8);
     }
 
-    .left-sidebar {
-        width: 160px;
+
+
+}
+
+/* 底部导航栏样式 */
+.bottom-navigation {
+    background: white;
+    border-top: 1px solid #e0e0e0;
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.nav-control-btn {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 40px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-control-btn:hover:not(:disabled) {
+    background: #e9ecef;
+    border-color: #adb5bd;
+}
+
+.nav-control-btn:active:not(:disabled) {
+    background: #dee2e6;
+    transform: translateY(1px);
+}
+
+.nav-control-btn:disabled {
+    background: #f8f9fa;
+    border-color: #e9ecef;
+    color: #adb5bd;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.page-info {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #495057;
+    min-width: 80px;
+    text-align: center;
+}
+
+.page-info .current {
+    color: #007bff;
+    font-weight: 600;
+}
+
+.page-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+    gap: 8px;
+    max-width: 100%;
+    justify-content: center;
+}
+
+.page-grid-item {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 8px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+}
+
+.page-grid-item:hover {
+    background: #e9ecef;
+    border-color: #adb5bd;
+    color: #495057;
+}
+
+.page-grid-item.active {
+    background: #007bff;
+    border-color: #007bff;
+    color: white;
+    font-weight: 600;
+}
+
+.page-grid-item:active {
+    transform: translateY(1px);
+}
+
+/* 移动端底部导航栏优化 */
+@media (max-width: 768px) {
+    .bottom-navigation {
+        padding: 12px 15px;
+        gap: 12px;
     }
 
-    .design-area {
-        width: calc(100vw - 160px);
+    .nav-controls {
+        gap: 10px;
+    }
+
+    .nav-control-btn {
+        padding: 6px 10px;
+        font-size: 12px;
+        min-width: 36px;
+        height: 32px;
+    }
+
+    .page-info {
+        padding: 6px 12px;
+        font-size: 12px;
+        min-width: 70px;
+    }
+
+    .page-grid {
+        grid-template-columns: repeat(auto-fit, minmax(35px, 1fr));
+        gap: 6px;
+    }
+
+    .page-grid-item {
+        padding: 6px;
+        font-size: 11px;
+        min-height: 28px;
     }
 }
